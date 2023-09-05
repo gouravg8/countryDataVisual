@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .allCountryCard {
+    @apply w-2/5 bg-[url('../src/map_image.jpg')] brightness-50 h-32 rounded text-2xl uppercase text-center flex flex-col justify-center align-middle text-black md:h-52 md:text-3xl lg:w-64 lg:h-64;
+  }
+  .threeBtns {
+    @apply bg-orange-600 px-2 py-1 text-white font-semibold rounded md:px-3 md:py-2 md:text-lg lg:px-4 lg:py-2 lg:text-xl;
+  }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country search</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    .mainImg {
+        object-fit: cover;
+        object-position: center;
+        opacity: .8;
+        filter: brightness(60%);
+    }
+
+    span {
+        font-weight: bold;
+        color: greenyellow;
+    }
+</style>
+
+<body>
+    <div class="containerr w-full h-full">
+        <div
+            class="homeMain w-full h-1/3 flex flex-col justify-center align-middle text-center relative text-white md:h-2/5 lg:h-4/6 mb-7">
+
+            <img src="../src/globe-2.jpg" alt="" srcset=""
+                class="mainImg w-full h-full -z-10 absolute top-0 left-0 object-center object-cover md:mt-0">
+
+            <h1 class="text-2xl font-bold tracking-widest mb-2 md:text-5xl md:mb-6 md:-mt-10 lg:text-7xl lg:-mt-32 ">
+                WORLD COUNTRIES LIST</h1>
+            <p id="totalNoOfCons" class="text-xl md:text-2xl lg:text-3xl">Total number of countries: </p>
+            <p id="countryContaining" class="md:text-xl lg:text-2xl hidden">Country containing <span
+                    id="startLetter">'f'</span> is: <span id="countCountry">7</span></p>
+
+            <ul class="btns flex justify-center align-middle gap-2 flex-wrap mt-3">
+                <li class="threeBtns">
+                    <input type="radio" id="searchByInitial" name="searchBy" class="hidden peer" />
+                    <label for="searchByInitial" class="peer-checked:text-black cursor-pointer">
+                        <div class="w-full">Start with Letter</div>
+                    </label>
+                </li>
+                <li class="threeBtns">
+                    <input type="radio" id="searchByWord" name="searchBy" class="hidden peer" />
+                    <label for="searchByWord" class="peer-checked:text-black cursor-pointer">
+                        <div class="w-full">Any word</div>
+                    </label>
+                </li>
+                <!-- <button id="sortIt" class="threeBtns">Sort</button> -->
+            </ul>
+            <input id="searchCountry" type="text" placeholder="Search country..."
+                class="w-3/4 mx-auto px-3 py-2 text-lg rounded-full text-center mt-6 md:w-1/2 lg:w-1/3 text-gray-700">
+        </div>
+
+        <div class="countryCards flex flex-wrap gap-6 justify-center align-middle">
+            <!-- <div class="flex flex-col justify-center align-middle w-64 h-fit relative">
+                <img class="brightness-50 rounded -z-10 w-full " src="../src/map_image.jpg" alt="" srcset="">
+                <p class="w-full text-center text-white z-10 absolute uppercase text-2xl">India</p>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="floatingNav fixed right-6 bottom-10 flex flex-col justify-center w-18
+        ">
+        <div class="links flex flex-col bg-orange-300 p-2 rounded">
+        </div>
+        <p class="btnOpen cursor-pointer text-right w-full z-10 mt-4">
+            <i class="ri-add-fill text-2xl text-white plusSign text-center p-1 rounded-full bg-orange-600"></i>
+        </p>
+    </div>
+    <script type="module">
+        import index from './index.mjs'
+        let flo = document.querySelector('.btnOpen')
+        let links = document.querySelector('.links')
+        let plusSign = document.querySelector('.plusSign')
+        let check = 0;
+
+
+        index.forEach(link => {
+            links.innerHTML += `<a class="font-semibold" href="/dist/${link.url}">${link.name}</a>`
+        });
+
+        links.style.display = 'none'
+        flo.addEventListener('click', () => {
+            if (check == 0) {
+                links.style.display = 'flex'
+                check = 1;
+            } else {
+                links.style.display = 'none'
+                check = 0;
+            }
+        })
+    </script>
+
+    <script type="module" src="country.js"></script>
+</body>
+
+</html>
