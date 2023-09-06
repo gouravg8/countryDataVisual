@@ -8,12 +8,88 @@
     <title>Authors Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    * {
+        margin: 0;
+        bottom: 0;
+        box-sizing: border-box;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    .authorTitlesSwapAnim {
+        animation: myAnim 1.5s ease 0s infinite normal forwards;
+    }
+
+    @keyframes myAnim {
+        0% {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .technologies {
+        animation: fade 1.5s ease 0s infinite normal forwards;
+    }
+
+    @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+    .zoomText:hover{
+        animation: zoomt .7s ease 0s 1 normal forwards;
+    }
+    @keyframes zoomt {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1.1);
+	}
+}
+</style>
 
 <body>
-    <div class="container">
-fsdfa
+    <div class="container w-4/5 flex flex-col align-middle justify-center mx-auto">
+        <h1 id="authorName"
+            class="text-4xl tracking-widest my-6 md:text-6xl font-semibold lg:text-7xl"></h1>
+
+        <div class="text-2xl flex justify-start align-middle bg-orange-100 p-3 my-3 lg:p-5">
+            <span id="authorTitlesEmoji" class='z-20'>🌱</span>
+            <p id="authorTitles" class="z-10">Educator</p>
+        </div>
+        <p id="authorBio" class="text-base"></p>
+        <div id="challenges" class="flex flex-wrap align-middle justify-center gap-4 my-8">
+            <!-- <p
+                class="w-3/4 p-6 md:p-16 text-center uppercase font-semibold text-xl text-black rounded md:w-1/4 hover:bg-orange-200 hover:font-bold lg:w-1/6">
+                js for eveon</p> -->
+            <!-- <p
+                class="w-3/4 p-6 md:p-16 text-center uppercase font-semibold text-xl text-black rounded md:w-1/4 hover:bg-orange-200 hover:font-bold lg:w-1/6">
+                30 days of py</p>
+            <p
+                class="w-3/4 p-6 md:p-16 text-center uppercase font-semibold text-xl text-black rounded md:w-1/4 hover:bg-orange-200 hover:font-bold lg:w-1/6">
+                30 days of js</p> -->
+        </div>
+        <p class="text-base md:text-lg mb-12">The technologies i teach <span id="technologies"
+                class="text-3xl font-bold md:text-4xl lg:text-5xl ">Node</span></p>
     </div>
 
+    <!-- ! floating button starts -->
     <div class="floatingNav fixed right-6 bottom-10 flex flex-col justify-center w-18
         ">
         <div class="links flex flex-col bg-orange-300 p-2 rounded">
@@ -45,6 +121,7 @@ fsdfa
             }
         })
     </script>
+    <script type="module" src="portfolio.js"></script>
 </body>
 
 </html>
