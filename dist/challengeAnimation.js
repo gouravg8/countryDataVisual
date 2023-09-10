@@ -71,7 +71,6 @@ let sameFontForAll = () => {
       myname.appendChild(sp);
     });
   }, 2000);
-  clearInterval(diff);
 };
 let diffFontForAll = () => {
   var diff = setInterval(async () => {
@@ -108,3 +107,6 @@ let diffFontForAll = () => {
   }, 2000);
   clearInterval(same);
 };
+
+
+sameFontForAll()
