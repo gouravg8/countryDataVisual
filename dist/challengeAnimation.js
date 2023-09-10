@@ -38,7 +38,7 @@ const fontFamilies = [
 ];
 
 let sameFontForAll = () => {
-  setInterval(async () => {
+  var same = setInterval(async () => {
     let myname = document.querySelector(".name");
     let heading = document.querySelector(".heading");
     heading.textContent = "";
@@ -71,5 +71,40 @@ let sameFontForAll = () => {
       myname.appendChild(sp);
     });
   }, 2000);
+  clearInterval(diff);
 };
-sameFontForAll()
+let diffFontForAll = () => {
+  var diff = setInterval(async () => {
+    let myname = document.querySelector(".name");
+    let heading = document.querySelector(".heading");
+    heading.textContent = "";
+    myname.textContent = "";
+    let head2 = "30 days of javascript challenge 2023";
+    let myname2 = "gourav soni";
+    let randBg = Math.floor(Math.random() * backgroundColors.length);
+    let headingAsArray = Array.from(head2.trim());
+    let myname2AsArray = Array.from(myname2.trim());
+    outerDiv.style.backgroundColor = backgroundColors[randBg];
+
+    headingAsArray.forEach((char) => {
+      let randFontFamilies = Math.floor(Math.random() * fontFamilies.length);
+      let randText = Math.floor(Math.random() * textColors.length);
+      let sp = document.createElement("span");
+      sp.textContent = char;
+      sp.style.color = textColors[randText];
+      sp.style.fontFamily = fontFamilies[randFontFamilies];
+      heading.appendChild(sp);
+    });
+
+    myname2AsArray.forEach((char) => {
+      let randFontFamilies = Math.floor(Math.random() * fontFamilies.length);
+      let randText = Math.floor(Math.random() * textColors.length);
+      let sp = document.createElement("span");
+      sp.textContent = char;
+      sp.style.color = textColors[randText];
+      sp.style.fontFamily = fontFamilies[randFontFamilies];
+      myname.appendChild(sp);
+    });
+  }, 2000);
+  clearInterval(same);
+};
