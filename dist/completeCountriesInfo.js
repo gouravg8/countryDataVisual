@@ -7,6 +7,7 @@ let btnPopulation = document.querySelector(".btnPopulation");
 let btnStat = document.querySelector(".btnStat");
 let divCountriesArea = document.querySelector(".countriesArea");
 let txtCountResult = document.querySelector(".countResult");
+let divBars = document.querySelector(".barsOutput");
 
 let oneCountry = (country) => {
   let out = `<div
@@ -48,6 +49,21 @@ let createCountry = (searchString) => {
   });
 };
 
+let createBars = () => {
+  const divs = Array.from(divCountriesArea.querySelectorAll(".oneCountry"));
+  divs.sort((a, b) => {
+    const nameA = a.querySelector(".populationAns").textContent;
+    const nameB = b.querySelector(".populationAns").textContent;
+    btnName.textContent = "Name " + "↑";
+    return nameB.localeCompare(nameA);
+  });
+
+  divBars.innerHTML = "";
+  divs.forEach((div) => {
+    divBars.appendChild(div);
+  });
+};
+
 //* Function to reverse the order of divs by name
 let statusName = 0;
 function reverseDivsByName() {
@@ -57,7 +73,7 @@ function reverseDivsByName() {
     divs.sort((a, b) => {
       const nameA = a.querySelector(".countryName").textContent;
       const nameB = b.querySelector(".countryName").textContent;
-      btnName.textContent = 'Name ' + '↑'
+      btnName.textContent = "Name " + "↑";
       return nameB.localeCompare(nameA);
     });
   } else {
@@ -65,7 +81,7 @@ function reverseDivsByName() {
     divs.sort((a, b) => {
       const nameA = a.querySelector(".countryName").textContent;
       const nameB = b.querySelector(".countryName").textContent;
-      btnName.textContent = 'Name ' + '↓'
+      btnName.textContent = "Name " + "↓";
       return nameA.localeCompare(nameB);
     });
   }
@@ -89,7 +105,7 @@ function reverseDivsByCapitalName() {
     divs.sort((a, b) => {
       const capA = a.querySelector(".capitalAns").textContent;
       const capB = b.querySelector(".capitalAns").textContent;
-      btnCapital.textContent = 'Capital ' + '↑'
+      btnCapital.textContent = "Capital " + "↑";
       return capB.localeCompare(capA);
     });
   } else {
@@ -97,7 +113,7 @@ function reverseDivsByCapitalName() {
     divs.sort((a, b) => {
       const capA = a.querySelector(".capitalAns").textContent;
       const capB = b.querySelector(".capitalAns").textContent;
-      btnCapital.textContent = 'Capital ' + '↓'
+      btnCapital.textContent = "Capital " + "↓";
       return capA.localeCompare(capB);
     });
   }
@@ -121,7 +137,7 @@ function reverseDivsByPopu() {
     divs.sort((a, b) => {
       const popA = +a.querySelector(".populationAns").textContent;
       const popB = +b.querySelector(".populationAns").textContent;
-      btnPopulation.textContent = 'Population ' + '↑'
+      btnPopulation.textContent = "Population " + "↑";
       return popB - popA;
     });
   } else {
@@ -129,7 +145,7 @@ function reverseDivsByPopu() {
     divs.sort((a, b) => {
       const popA = +a.querySelector(".populationAns").textContent;
       const popB = +b.querySelector(".populationAns").textContent;
-      btnPopulation.textContent = 'Population ' + '↓'
+      btnPopulation.textContent = "Population " + "↓";
       return popA - popB;
     });
   }
@@ -149,4 +165,5 @@ inpSearch.addEventListener("input", (e) => {
   let inpVal = e.target.value.slice(1);
   let searchString = (firstCharOfInpVal + inpVal).trim();
   createCountry(searchString);
+  createBars();
 });
