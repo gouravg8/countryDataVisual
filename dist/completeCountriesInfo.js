@@ -153,6 +153,7 @@ inpSearch.addEventListener("input", (e) => {
   let inpVal = e.target.value.slice(1);
   let searchString = (firstCharOfInpVal + inpVal).trim();
   createCountry(searchString);
+  divBars.innerHTML = "";
   // createPopBars();
 });
 
@@ -174,7 +175,7 @@ let createPopBars = () => {
       cont.querySelector(".populationAns").textContent;
 
     let iskiDiv = document.createElement("div");
-    iskiDiv.classList.add("grid", "grid-cols-12", "my-2");
+    iskiDiv.classList.add("grid", "grid-cols-12", "my-2", "animate-fade");
 
     let cName = document.createElement("p");
     cName.classList.add("text-center", "col-span-2");
@@ -202,17 +203,36 @@ let createLangBars = () => {
 
   let allLangs = {};
   countris.forEach((langs) => {
-    let lang = Array.from(langs.querySelectorAll(".languagesAns"));
+    let langss = Array.from(langs.querySelectorAll(".languagesAns"));
+    // let lang = Array.from(langss[0].textContent);
+    let lang = langss[0].textContent.split(",");
+    // console.log(langss[0].textContent);
+    // lang.forEach((g) => console.log(g));
+
     lang.forEach((oneLang) => {
       if (allLangs[oneLang]) {
         allLangs[oneLang]++;
       } else {
         allLangs[oneLang] = 1;
       }
+      // console.log(oneLang);
     });
-    console.log(lang[0].textContent);
+    // console.log(lang[0].textContent);
+    // lang.forEach((onelang) => {
+    //   console.log(allLangs[onelang]);
+    // });
   });
 
+  // let vals = Object.values(allLangs);
+  let entry = Object.entries(allLangs);
+  // allLangs.sort((a, b) => b[1] - a[1]);
+  // console.log(
+  //   "vals",
+  //   vals.sort((a, b) => b - a)
+  // );
+  entry.sort((a, b) => b[1] - a[1]);
+  // console.log("entrys", entry);
+  // console.log(entry.keys(), entry.values());
   // let entry = Object.entries(allLangs);
   // for (const [key, value] of Object.entries(allLangs)) {
   //   console.log(key, value);
@@ -222,25 +242,23 @@ let createLangBars = () => {
 
   // * adding the bars in UI
   divBars.innerHTML = "";
-  countris.forEach((cont) => {
-    let populationOfThatCountry =
-      cont.querySelector(".populationAns").textContent;
-
+  let mostSpokenLang = entry[0][1];
+  entry.forEach((cont) => {
+    // console.log(mostSpokenLang);
     let iskiDiv = document.createElement("div");
-    iskiDiv.classList.add("grid", "grid-cols-12", "my-2");
+    iskiDiv.classList.add("grid", "grid-cols-12", "my-2", "animate-fade");
 
     let cName = document.createElement("p");
     cName.classList.add("text-center", "col-span-2");
-    cName.textContent = cont.querySelector(".countryName").textContent;
+    cName.textContent = cont[0];
 
     let iskiBar = document.createElement("p");
     iskiBar.classList.add("bar", "w-full", "col-span-8", "bg-orange-400");
-    iskiBar.style.width =
-      Math.ceil((populationOfThatCountry / maxPop) * 100) + "%";
+    iskiBar.style.width = Math.ceil((cont[1] / mostSpokenLang) * 100) + "%";
 
     let iskiPop = document.createElement("p");
     iskiPop.classList.add("text-center", "nums", "col-span-2");
-    iskiPop.textContent = populationOfThatCountry;
+    iskiPop.textContent = cont[1];
 
     iskiDiv.appendChild(cName);
     iskiDiv.appendChild(iskiBar);
