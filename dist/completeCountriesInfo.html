@@ -28,7 +28,8 @@
                     type="submit">Capital</button>
                 <button class="btnPopulation bg-orange-400 font-semibold px-4 py-1 rounded-full"
                     type="submit">Population</button>
-                <i class="btnStat text-orange-400 text-2xl ri-bar-chart-2-line cursor-pointer px-2"></i>
+                <a href="#bars"><i
+                        class="btnStat text-orange-400 text-2xl ri-bar-chart-2-line cursor-pointer px-2"></i></a>
             </div>
         </div>
         <div
@@ -46,15 +47,17 @@
                         class="font-normal populationAns capitalAns">1,40,00,00,000</span></p>
             </div> -->
         </div>
-        <div class="barsOutput w-full mx-auto flex flex-col justify-center align-middle">
+        <div id="bars" class="barsOutput w-full mx-auto flex-col justify-center align-middle hidden">
             <div class="twoBtns mx-auto p-3">
-                <button class="bg-orange-400 px-3 py-1 rounded-full">Population</button>
-                <button class="bg-orange-400 px-3 py-1 rounded-full">Languages</button>
+                <button class="statPopBtn bg-orange-400 px-3 py-1 rounded-full">Population</button>
+                <button class="statLangBtn bg-orange-400 px-3 py-1 rounded-full">Languages</button>
             </div>
-            <div class="grid grid-cols-12 my-2">
-                <p class="text-center col-span-2">English</p>
-                <p class="bar w-full col-span-8 bg-orange-400"></p>
-                <p class="text-center nums col-span-2">998</p>
+            <div class="bars">
+                <!-- <div class="grid grid-cols-12 my-2">
+                    <p class="text-center col-span-2">English</p>
+                    <p class="bar w-full col-span-8 bg-orange-400"></p>
+                    <p class="text-center nums col-span-2">998</p>
+                </div> -->
             </div>
             <!-- <div class="grid grid-cols-12 my-2">
                 <p class="text-center col-span-2">English</p>

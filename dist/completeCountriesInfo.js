@@ -7,7 +7,10 @@ let btnPopulation = document.querySelector(".btnPopulation");
 let btnStat = document.querySelector(".btnStat");
 let divCountriesArea = document.querySelector(".countriesArea");
 let txtCountResult = document.querySelector(".countResult");
-let divBars = document.querySelector(".barsOutput");
+let divBars = document.querySelector(".bars");
+let divBarsOutput = document.querySelector(".barsOutput");
+let statPopBtn = document.querySelector(".statPopBtn");
+let statLangBtn = document.querySelector(".statLangBtn");
 
 let oneCountry = (country) => {
   let out = `<div
@@ -46,21 +49,6 @@ let createCountry = (searchString) => {
         ? count + " country satisfy search criteria"
         : count + " countries satisfy search criteria";
     txtCountResult.style.display = "block";
-  });
-};
-
-let createBars = () => {
-  const divs = Array.from(divCountriesArea.querySelectorAll(".oneCountry"));
-  divs.sort((a, b) => {
-    const nameA = a.querySelector(".populationAns").textContent;
-    const nameB = b.querySelector(".populationAns").textContent;
-    btnName.textContent = "Name " + "↑";
-    return nameB.localeCompare(nameA);
-  });
-
-  divBars.innerHTML = "";
-  divs.forEach((div) => {
-    divBars.appendChild(div);
   });
 };
 
@@ -165,5 +153,109 @@ inpSearch.addEventListener("input", (e) => {
   let inpVal = e.target.value.slice(1);
   let searchString = (firstCharOfInpVal + inpVal).trim();
   createCountry(searchString);
-  createBars();
+  // createPopBars();
+});
+
+// * Creating the bars
+let createPopBars = () => {
+  const countris = Array.from(divCountriesArea.querySelectorAll(".oneCountry"));
+  countris.sort((a, b) => {
+    const byPopA = +a.querySelector(".populationAns").textContent;
+    const byPopb = +b.querySelector(".populationAns").textContent;
+    return byPopb - byPopA;
+  });
+
+  let maxPop = +countris[0].querySelector(".populationAns").textContent;
+
+  // * adding the bars in UI
+  divBars.innerHTML = "";
+  countris.forEach((cont) => {
+    let populationOfThatCountry =
+      cont.querySelector(".populationAns").textContent;
+
+    let iskiDiv = document.createElement("div");
+    iskiDiv.classList.add("grid", "grid-cols-12", "my-2");
+
+    let cName = document.createElement("p");
+    cName.classList.add("text-center", "col-span-2");
+    cName.textContent = cont.querySelector(".countryName").textContent;
+
+    let iskiBar = document.createElement("p");
+    iskiBar.classList.add("bar", "w-full", "col-span-8", "bg-orange-400");
+    iskiBar.style.width =
+      Math.ceil((populationOfThatCountry / maxPop) * 100) + "%";
+
+    let iskiPop = document.createElement("p");
+    iskiPop.classList.add("text-center", "nums", "col-span-2");
+    iskiPop.textContent = populationOfThatCountry;
+
+    iskiDiv.appendChild(cName);
+    iskiDiv.appendChild(iskiBar);
+    iskiDiv.appendChild(iskiPop);
+    // console.log(maxPop);
+    divBars.appendChild(iskiDiv);
+  });
+};
+
+let createLangBars = () => {
+  const countris = Array.from(divCountriesArea.querySelectorAll(".oneCountry"));
+
+  let allLangs = {};
+  countris.forEach((langs) => {
+    let lang = Array.from(langs.querySelectorAll(".languagesAns"));
+    lang.forEach((oneLang) => {
+      if (allLangs[oneLang]) {
+        allLangs[oneLang]++;
+      } else {
+        allLangs[oneLang] = 1;
+      }
+    });
+    console.log(lang[0].textContent);
+  });
+
+  // let entry = Object.entries(allLangs);
+  // for (const [key, value] of Object.entries(allLangs)) {
+  //   console.log(key, value);
+  // }
+
+  let maxPop = +countris[0].querySelector(".populationAns").textContent;
+
+  // * adding the bars in UI
+  divBars.innerHTML = "";
+  countris.forEach((cont) => {
+    let populationOfThatCountry =
+      cont.querySelector(".populationAns").textContent;
+
+    let iskiDiv = document.createElement("div");
+    iskiDiv.classList.add("grid", "grid-cols-12", "my-2");
+
+    let cName = document.createElement("p");
+    cName.classList.add("text-center", "col-span-2");
+    cName.textContent = cont.querySelector(".countryName").textContent;
+
+    let iskiBar = document.createElement("p");
+    iskiBar.classList.add("bar", "w-full", "col-span-8", "bg-orange-400");
+    iskiBar.style.width =
+      Math.ceil((populationOfThatCountry / maxPop) * 100) + "%";
+
+    let iskiPop = document.createElement("p");
+    iskiPop.classList.add("text-center", "nums", "col-span-2");
+    iskiPop.textContent = populationOfThatCountry;
+
+    iskiDiv.appendChild(cName);
+    iskiDiv.appendChild(iskiBar);
+    iskiDiv.appendChild(iskiPop);
+    // console.log(maxPop);
+    divBars.appendChild(iskiDiv);
+  });
+};
+
+btnStat.addEventListener("click", () => (divBarsOutput.style.display = "flex"));
+
+statPopBtn.addEventListener("click", () => {
+  createPopBars();
+});
+
+statLangBtn.addEventListener("click", () => {
+  createLangBars();
 });
