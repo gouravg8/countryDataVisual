@@ -7,12 +7,8 @@ export const theme = {
       fade: "fadeInLeft 1s ease-in",
     },
 
-    // that is actual animation
+    // that is fadeInLeft animation
     keyframes: (theme) => ({
-      // fadeOut: {
-      //   "0%": { marginRight: "3vh" },
-      //   "100%": { marginRight: "0vh" },
-      // },
       fadeInLeft: {
         "0%": {
           opacity: "0",

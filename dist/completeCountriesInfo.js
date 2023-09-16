@@ -32,8 +32,6 @@ let createCountry = (searchString) => {
   let count = 0;
   divCountriesArea.textContent = "";
 
-  // orderChange(searchString);
-
   countries_data.forEach((country) => {
     if (
       searchString &&
@@ -73,6 +71,7 @@ function reverseDivsByName() {
       return nameA.localeCompare(nameB);
     });
   }
+
   // Clear the divCountriesArea
   divCountriesArea.innerHTML = "";
   // Append the sorted divs back to the divCountriesArea
@@ -139,6 +138,7 @@ function reverseDivsByPopu() {
   }
   // Clear the divCountriesArea
   divCountriesArea.innerHTML = "";
+  
   // Append the sorted divs back to the divCountriesArea
   divs.forEach((div) => {
     divCountriesArea.appendChild(div);
@@ -207,7 +207,6 @@ let createLangBars = () => {
     // let lang = Array.from(langss[0].textContent);
     let lang = langss[0].textContent.split(",");
     // console.log(langss[0].textContent);
-    // lang.forEach((g) => console.log(g));
 
     lang.forEach((oneLang) => {
       if (allLangs[oneLang]) {
@@ -215,28 +214,12 @@ let createLangBars = () => {
       } else {
         allLangs[oneLang] = 1;
       }
-      // console.log(oneLang);
     });
-    // console.log(lang[0].textContent);
-    // lang.forEach((onelang) => {
-    //   console.log(allLangs[onelang]);
-    // });
   });
 
   // let vals = Object.values(allLangs);
   let entry = Object.entries(allLangs);
-  // allLangs.sort((a, b) => b[1] - a[1]);
-  // console.log(
-  //   "vals",
-  //   vals.sort((a, b) => b - a)
-  // );
   entry.sort((a, b) => b[1] - a[1]);
-  // console.log("entrys", entry);
-  // console.log(entry.keys(), entry.values());
-  // let entry = Object.entries(allLangs);
-  // for (const [key, value] of Object.entries(allLangs)) {
-  //   console.log(key, value);
-  // }
 
   let maxPop = +countris[0].querySelector(".populationAns").textContent;
 
