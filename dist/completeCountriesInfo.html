@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full contries Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<body>
+    <div class="main flex flex-col justify-center align-middle">
+        <div class="headingWala w-full text-center bg-gray-100 mx-auto py-2">
+            <!-- sizes change bg change  md:bg-red-500 lg:bg-green-500 xl:bg-blue-500 -->
+            <h1 class="text-2xl text-orange-500 md:text-4xl font-semibold lg:text-5xl xl:text-6xl">
+                World Countries Data</h1>
+            <p class="md:text-lg">Currently we have 250 countries</p>
+            <p class="text-orange-500 countResult hidden"></p>
+        </div>
+        <div class="searchArea w-full mx-auto text-center mt-3">
+            <input
+                class="searchArea w-1/2 border px-3 py-1.5 rounded-full focus:outline focus:outline-gray-600 focus:outline-1"
+                type="text" placeholder="Enter search query">
+            <div class="w-5/6 mx-auto fourBtns mt-4 flex justify-center gap-3 align-middle">
+                <button class="btnName bg-orange-400 font-semibold px-4 py-1 rounded-full" type="submit">Name</button>
+                <button class="btnCapital bg-orange-400 font-semibold px-4 py-1 rounded-full"
+                    type="submit">Capital</button>
+                <button class="btnPopulation bg-orange-400 font-semibold px-4 py-1 rounded-full"
+                    type="submit">Population</button>
+                <a href="#bars"><i
+                        class="btnStat text-orange-400 text-2xl ri-bar-chart-2-line cursor-pointer px-2"></i></a>
+            </div>
+        </div>
+        <div
+            class="countriesArea mt-5 py-6 gap-2 xl:gap-0 w-full bg-gray-100 flex flex-col flex-wrap justify-around align-middle md:flex-row">
+            <!-- <div
+                class="oneCountry p-3 mx-auto w-4/5 bg-white flex flex-col justify-center align-middle text-center md:mt-0 md:w-64 md:mx-0">
+                <img class="" src="https://flagcdn.com/in.svg" alt="" srcset="">
+                <p class="countryName text-orange-400 text-2xl font-semibold md:text-xl lg:text-2xl">India</p>
+                <p class="text-left text-lg font-semibold md:text-base">Capital: <span
+                        class="font-normal capitalAns">New
+                        Delhi</span></p>
+                <p class="text-left text-lg font-semibold md:text-base">Languages: <span
+                        class="font-normal languagesAns capitalAns">Hindi, English, Chindi</span></p>
+                <p class="text-left text-lg font-semibold md:text-base">Populations: <span
+                        class="font-normal populationAns capitalAns">1,40,00,00,000</span></p>
+            </div> -->
+        </div>
+        <div id="bars" class="barsOutput w-full mx-auto my-3 flex-col justify-center align-middle hidden">
+            <div class="twoBtns mx-auto p-3">
+                <button class="statPopBtn bg-orange-400 px-3 py-1 rounded-full">Population</button>
+                <button class="statLangBtn bg-orange-400 px-3 py-1 rounded-full">Languages</button>
+            </div>
+            <div class="bars">
+                <!-- <div class="grid grid-cols-12 my-2">
+                    <p class="text-center col-span-2">English</p>
+                    <p class="bar w-full col-span-8 bg-orange-400"></p>
+                    <p class="text-center nums col-span-2">998</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Nav -->
+    <div class="floatingNav fixed right-6 bottom-10 flex flex-col justify-center w-18
+        ">
+        <div class="links flex flex-col bg-orange-300 p-2 rounded">
+        </div>
+        <p class="btnOpen cursor-pointer text-right w-full z-10 mt-4">
+            <i class="ri-add-fill text-2xl text-white plusSign text-center p-1 rounded-full bg-orange-600"></i>
+        </p>
+    </div>
+    <script type="module">
+        import index from './index.mjs'
+        let flo = document.querySelector('.btnOpen')
+        let links = document.querySelector('.links')
+        let plusSign = document.querySelector('.plusSign')
+        let check = 0;
+
+
+        index.forEach(link => {
+            links.innerHTML += `<a class="font-semibold" href="/dist/${link.url}">${link.name}</a>`
+        });
+
+        links.style.display = 'none'
+        flo.addEventListener('click', () => {
+            if (check == 0) {
+                links.style.display = 'flex'
+                check = 1;
+            } else {
+                links.style.display = 'none'
+                check = 0;
+            }
+        })
+    </script>
+    <script type="module" src="completeCountriesInfo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge animation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body class="bg-white">
+    <div class="w-fit h-full p-3 relative">
+        <div
+            class="outer bg-red-800 md:bg-green-700 lg:bg-orange-800 xl:bg-black w-full h-full my-auto p-6 flex flex-col justify-center align-middle text-white">
+            <h1 class="heading h-fit text-6xl md:text-8xl lg:text-8xl xl:text-9xl font-bold uppercase">30 days of
+                javascript challenge 2023</h1>
+            <h1 class="name h-fit text-6xl md:text-8xl lg:text-8xl xl:text-9xl font-bold uppercase">gourav soni
+            </h1>
+        </div>
+        <div class="text-end checks absolute right-0 top-0 m-3 p-3 font-semibold">
+            <a class="text-blue-600 underline" href="challengeAnimation.html">Go to Part One</a>
+        </div>
+    </div>
+
+    <!-- for navigation -->
+    <div class="floatingNav fixed right-6 bottom-10 flex flex-col justify-center w-18
+        ">
+        <div class="links flex flex-col bg-orange-300 p-2 rounded">
+        </div>
+        <p class="btnOpen cursor-pointer text-right w-full z-10 mt-4">
+            <i class="ri-add-fill text-2xl text-white plusSign text-center p-1 rounded-full bg-orange-600"></i>
+        </p>
+    </div>
+    <script type="module">
+        import index from './index.mjs'
+        let flo = document.querySelector('.btnOpen')
+        let links = document.querySelector('.links')
+        let plusSign = document.querySelector('.plusSign')
+        let check = 0;
+
+
+        index.forEach(link => {
+            links.innerHTML += `<a class="font-semibold" href="/dist/${link.url}">${link.name}</a>`
+        });
+
+        links.style.display = 'none'
+        flo.addEventListener('click', () => {
+            if (check == 0) {
+                links.style.display = 'flex'
+                check = 1;
+            } else {
+                links.style.display = 'none'
+                check = 0;
+            }
+        })
+    </script>
+    <script src="challengeAnimation2.js"></script>
+</body>
+
+</html>

@@ -4,6 +4,7 @@ const index = [
   { name: "Portfolio", url: "portfolio.html" },
   { name: "LeaderBoard", url: "leaderboard.html" },
   { name: "NewAnimaiton", url: "challengeAnimation.html" },
+  { name: "ComConInfo", url: "completeCountriesInfo.html" },
 ];
 
 export default index;
