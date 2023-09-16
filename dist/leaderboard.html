@@ -81,7 +81,10 @@
 
 
         index.forEach(link => {
-            links.innerHTML += `<a class="font-normal" href="/dist/${link.url}">${link.name}</a>`
+            // for dev
+            // links.innerHTML += `<a class="font-semibold" href="/dist/${link.url}">${link.name}</a>`
+            // for githubpages
+            links.innerHTML += `<a class="font-semibold" href="/${link.url}">${link.name}</a>`
         });
 
         links.style.display = 'none'
