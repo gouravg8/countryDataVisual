@@ -8,12 +8,12 @@ const index = [
   // { name: "ComConInfo", url: "completeCountriesInfo.html" },
 
   // for github pages
-  { name: "Index", url: "./index.html" },
-  { name: "Country Data", url: "./dist/country.html" },
-  { name: "Portfolio", url: "./dist/portfolio.html" },
-  { name: "LeaderBoard", url: "./dist/leaderboard.html" },
-  { name: "NewAnimaiton", url: "./dist/challengeAnimation.html" },
-  { name: "ComConInfo", url: "./dist/completeCountriesInfo.html" },
+  { name: "Index", url: "countryDataVisual/index.html" },
+  { name: "Country Data", url: "countryDataVisual/dist/country.html" },
+  { name: "Portfolio", url: ".countryDataVisual/dist/portfolio.html" },
+  { name: "LeaderBoard", url: ".countryDataVisual/dist/leaderboard.html" },
+  { name: "NewAnimaiton", url: ".countryDataVisual/dist/challengeAnimation.html" },
+  { name: "ComConInfo", url: ".countryDataVisual/dist/completeCountriesInfo.html" },
 ];
 
 export default index;
